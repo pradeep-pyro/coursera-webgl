@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>Painting</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../css/style.css">
+
+<body class="assignment">
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+void
+main()
+{
+    gl_Position = vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+void
+main()
+{
+    gl_FragColor = vec4( 0.925, 0.443, 0.286, 1.0 );
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/flatten.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="assignment2.js"></script>
+</head>
+
+<h1>Assignment 2: Painting</h1>
+<div id="container"> 
+	<div id="main">  
+		<canvas id="gl-canvas" width=600 height=600>
+		Oops ... your browser doesn't support the HTML5 canvas element
+		</canvas>
+	</div>
+	<div id="sidebar">
+		<form id="settings" >
+	      	<div class=form-group>
+				<label for="thickness">Thickness: </label>
+				<input type="range" name="thickness" min=0 max=7 value=3 oninput="outputThickness(value)">
+				<output for=thickness id=thickness>2</output>
+				<label for="color">Color: </label>
+				<input type="color" name="color" value="#ff0000">
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+	function outputThickness(value) {
+  		document.querySelector('#thickness').value = value;
+  	};
+</script>
+</body>
+</html>
