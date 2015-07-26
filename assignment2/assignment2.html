@@ -7,19 +7,23 @@
 <body class="assignment">
 <script id="vertex-shader" type="x-shader/x-vertex">
 attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
 void
 main()
 {
     gl_Position = vPosition;
+    fColor = vColor;
 }
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
+varying vec4 fColor;
 void
 main()
 {
-    gl_FragColor = vec4( 0.925, 0.443, 0.286, 1.0 );
+    gl_FragColor = fColor;
 }
 </script>
 
@@ -43,8 +47,8 @@ main()
 				<label for="thickness">Thickness: </label>
 				<input type="range" name="thickness" min=0 max=7 value=3 oninput="outputThickness(value)">
 				<output for=thickness id=thickness>2</output>
-				<label for="color">Color: </label>
-				<input type="color" name="color" value="#ff0000">
+				<label for="lineColor">Color: </label>
+				<input type="color" id="lineColor" value="#ff0000">
 			</div>
 		</form>
 	</div>
